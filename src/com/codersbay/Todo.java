@@ -6,7 +6,7 @@ public class Todo {
     private String title;
     private String description;
     private ArrayList<Task> taskList;
-    private int TODOID = 0;
+    private int TODOID;
 
     public Todo(String title, String description, ArrayList<Task> taskList) {
         this.title = title;
@@ -36,6 +36,14 @@ public class Todo {
 
     public void setTaskList(ArrayList<Task> taskList) {
         this.taskList = taskList;
+    }
+
+    public int getTODOID() {
+        return TODOID;
+    }
+
+    public void setTODOID(int TODOID) {
+        this.TODOID = TODOID;
     }
 
     @Override

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        TodoDAO tododao = new TodoDAO();
+        TodoDAO todoDAO = new TodoDAO();
         ArrayList<Task> todos = new ArrayList<>();
-        TaskDAO taskdao = new TaskDAO();
+        TaskDAO taskDAO = new TaskDAO();
         ArrayList<Task> tasks = new ArrayList<>();
     }
 }
