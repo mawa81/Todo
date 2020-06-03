@@ -7,6 +7,9 @@ public class Task {
     private int TODOID;
     private int TASKID;
 
+    public Task() {
+    }
+
     public Task(String title, String description) {
         this.title = title;
         this.description = description;
@@ -37,6 +40,7 @@ public class Task {
     }
 
     public int getTASKID() {
+
         return TASKID;
     }
 

@@ -8,6 +8,9 @@ public class Todo {
     private ArrayList<Task> taskList;
     private int TODOID;
 
+    public Todo() {
+    }
+
     public Todo(String title, String description, ArrayList<Task> taskList) {
         this.title = title;
         this.description = description;
@@ -45,6 +48,15 @@ public class Todo {
     public void setTODOID(int TODOID) {
         this.TODOID = TODOID;
     }
+
+    public void addTask(Task task) {
+        this.taskList.add(task);
+    }
+
+    public void removeTask(Task task) {
+        this.taskList.remove(task);
+    }
+
 
     @Override
     public String toString() {

@@ -15,29 +15,42 @@ public class TaskDAO {
         }
     }
 
-    private void insertTask(Task toInsert) {
+    public void insertTask(Task toInsert, int id) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT INTO task VALUES(?,?,?)");
-            ps.setString(1, toInsert.getTitle());
-            ps.setString(2, toInsert.getDescription());
-            ps.setInt(3, toInsert.getTODOID());
+            ps = conn.prepareStatement("INSERT INTO task(todo2_id,title,description) VALUES(?,?,?)");
+            ps.setInt(1, id);
+            ps.setString(2, toInsert.getTitle());
+            ps.setString(3, toInsert.getDescription());
             ps.execute();
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Task> selectAllTasks() {
+    public void deleteTask(String toDelete) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("DELETE FROM task WHERE title = ?");
+            ps.setString(1, toDelete);
+
+            ps.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public ArrayList<Task> selectAllTasks(int id) {
         try {
             ArrayList<Task> taskList = new ArrayList<>();
-            PreparedStatement ps = conn.prepareStatement(("SELECT * FROM task"));
-            ps.execute();
+            PreparedStatement ps = conn.prepareStatement(("SELECT * FROM task WHERE todo2_id = ?"));
+            ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 String title = rs.getString("title");
                 String description = rs.getString("description");
-                int todoID = rs.getInt("todo_id");
+                int todoID = rs.getInt("todo2_id");
 
                 Task t = new Task(title, description);
                 taskList.add(t);
